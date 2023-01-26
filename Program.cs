@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SACM.Data;
+using SACM.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
 
 var app = builder.Build();
 
