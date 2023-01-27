@@ -19,9 +19,9 @@ namespace SACM.Services
 
         }
 
-        public Especialidade Update(int codigo, Especialidade especialidade)
+        public Especialidade Update(int id, Especialidade especialidade)
         {
-            _repository.Update(codigo, especialidade);
+            _repository.Update(id, especialidade);
             return especialidade;
         }
 

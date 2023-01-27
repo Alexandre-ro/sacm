@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SACM.Data;
 using SACM.Repositories;
+using SACM.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +24,9 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Injeção de dependência
 builder.Services.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
+builder.Services.AddScoped<IEspecialidadeService, EspecialidadeService>();
 
 var app = builder.Build();
 
