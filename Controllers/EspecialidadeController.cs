@@ -14,7 +14,6 @@ namespace SACM.Controllers
         public EspecialidadeController(IEspecialidadeService service)
         {
             _service = service;
-
         }
 
         [HttpPost]
