@@ -5,7 +5,7 @@ namespace SACM.Repositories
 {
     public class EspecialidadeRepository : IEspecialidadeRepository
     {
-        private readonly SacmContext _context;
+        private SacmContext _context;
 
         public EspecialidadeRepository(SacmContext context)
         {
@@ -31,6 +31,14 @@ namespace SACM.Repositories
 
         public Especialidade Create(Especialidade especialidade)
         {
+            Especialidade especialidadeBD = _context.Especialidades
+                                            .FirstOrDefault(x => x.Nome.Equals(especialidade.Nome));
+
+            if (especialidadeBD != null) 
+            {
+                return null;
+            }
+
             _context.Especialidades.Add(especialidade);
             _context.SaveChanges();
 
@@ -39,13 +47,25 @@ namespace SACM.Repositories
 
         public Especialidade Update(int codigo, Especialidade especialidade)
         {
+            Especialidade especialidadeOld = _context.Especialidades.FirstOrDefault(x => x.Codigo == codigo);
 
-            if (_context.Especialidades.FirstOrDefault(x => x.Codigo == codigo) == null)
+            if (especialidadeOld == null)
             {
                 return null;
             }
 
-            _context.Especialidades.Update(especialidade);
+            Especialidade especialidadeBD;
+            especialidadeBD = _context.Especialidades.FirstOrDefault(x => x.Nome.Equals(especialidade.Nome));
+
+            if (especialidadeBD != null) 
+            {
+                return null;
+            }                              
+
+            especialidadeOld.Codigo = codigo;
+            especialidadeOld.Nome = especialidade.Nome;
+
+            _context.Update(especialidadeOld);
             _context.SaveChanges();
 
             return especialidade;

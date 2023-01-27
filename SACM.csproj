@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Repositories\ndgdsgf2.mzy~" />
+    <None Remove="Services\fn22ww1r.5mz~" />
   </ItemGroup>
 
   <ItemGroup>

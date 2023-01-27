@@ -5,24 +5,21 @@ namespace SACM.Services
 {
     public class EspecialidadeService : IEspecialidadeService
     {
-        private readonly EspecialidadeRepository _repository;
+        private IEspecialidadeRepository _repository;
 
-        public EspecialidadeService(EspecialidadeRepository repository)
+        public EspecialidadeService(IEspecialidadeRepository repository)
         {
             _repository = repository;
         }
 
         public Especialidade Create(Especialidade especialidade)
         {
-            _repository.Create(especialidade);
-            return especialidade;
-
+            return _repository.Create(especialidade);
         }
 
         public Especialidade Update(int id, Especialidade especialidade)
         {
-            _repository.Update(id, especialidade);
-            return especialidade;
+            return _repository.Update(id, especialidade);         
         }
 
         public bool DeleteById(int id)

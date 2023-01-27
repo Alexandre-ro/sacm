@@ -9,8 +9,7 @@ namespace SACM.Controllers
     [ApiController]
     public class EspecialidadeController : ControllerBase
     {
-        private readonly IEspecialidadeService _service;
-
+        private IEspecialidadeService _service;
         public EspecialidadeController(IEspecialidadeService service)
         {
             _service = service;
@@ -21,12 +20,11 @@ namespace SACM.Controllers
         {
             try
             {
-                if (especialidade == null)
+                if (_service.Create(especialidade) == null)
                 {
-                    return BadRequest("Ocorreu um erro com os dados informados!");
+                    return BadRequest("Já existe uma Especialidade com este nome!");
                 }
 
-                _service.Create(especialidade);
                 return Ok(especialidade);
             }
             catch (Exception ex)
@@ -40,14 +38,14 @@ namespace SACM.Controllers
         {
             try
             {
-                if (id <= 0)
+                if (id <= 0 || especialidade.Codigo != id)
                 {
                     return BadRequest("O Código informado é inválido!");
                 }
 
                 if (_service.Update(id, especialidade) == null)
                 {
-                    return StatusCode(500, "Ocorreu um erro no Servidor!");
+                    return StatusCode(500, "Não é possível atualizar com o ID e Nome informados!");
                 }
 
                 return Ok(especialidade);
