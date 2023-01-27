@@ -14,6 +14,7 @@ namespace SACM.Controllers
         public EspecialidadeController(IEspecialidadeService service)
         {
             _service = service;
+
         }
 
         [HttpPost]
@@ -98,7 +99,7 @@ namespace SACM.Controllers
         }
 
         [HttpGet]
-        public IActionResult BuscarEspecialidades() 
+        public IActionResult BuscarEspecialidades()
         {
             try
             {
@@ -112,7 +113,7 @@ namespace SACM.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-        
+
         }
     }
 }
