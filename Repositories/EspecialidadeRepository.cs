@@ -10,6 +10,7 @@ namespace SACM.Repositories
         public EspecialidadeRepository(SacmContext context)
         {
             _context = context;
+
         }
 
         public Especialidade GetById(int codigo)
