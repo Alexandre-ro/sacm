@@ -14,52 +14,20 @@ namespace SACM.Services
 
         public Especialidade Create(Especialidade especialidade)
         {
-            try
-            {
-                _repository.Create(especialidade);
+            _repository.Create(especialidade);
+            return especialidade;
 
-                return especialidade;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
         }
 
         public Especialidade Update(int codigo, Especialidade especialidade)
         {
-            try
-            {
-                if (codigo <= 0)
-                {
-                    return null;
-                }
-
-                _repository.Update(codigo, especialidade);
-                return especialidade;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
+            _repository.Update(codigo, especialidade);
+            return especialidade;
         }
 
         public bool DeleteById(int id)
         {
-            try
-            {
-                if (id <= 0)
-                {
-                    return false;
-                }
-
-                _repository.DeleteById(id);
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
+            return _repository.DeleteById(id);
         }
 
         public IEnumerable<Especialidade> FindAll()
@@ -69,12 +37,7 @@ namespace SACM.Services
 
         public Especialidade GetById(int id)
         {
-            if (id <= 0)
-            {
-                return null;
-            }
-
-            return _repository.GetById(id);
+             return _repository.GetById(id);
         }
 
     }
