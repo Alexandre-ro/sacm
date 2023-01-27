@@ -10,7 +10,6 @@ namespace SACM.Repositories
         public EspecialidadeRepository(SacmContext context)
         {
             _context = context;
-
         }
 
         public Especialidade GetById(int codigo)
@@ -45,7 +44,7 @@ namespace SACM.Repositories
             {
                 return null;
             }
-            
+
             _context.Especialidades.Update(especialidade);
             _context.SaveChanges();
 
