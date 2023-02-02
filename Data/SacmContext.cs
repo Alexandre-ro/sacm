@@ -14,6 +14,8 @@ namespace SACM.Data
         {
             builder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
+
+
         }
 
         public DbSet<Especialidade> Especialidades { get; set; }

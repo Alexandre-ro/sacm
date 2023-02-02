@@ -11,7 +11,9 @@ namespace SACM.Data.Map
             builder.ToTable("especialidade");            
             builder.HasKey(x => x.Codigo);
             builder.Property(x => x.Codigo).HasColumnName("codigo").ValueGeneratedOnAdd();
-            builder.Property(x => x.Nome).HasColumnName("nome").HasMaxLength(100).IsRequired();           
+            builder.Property(x => x.Nome).HasColumnName("nome").HasMaxLength(100).IsRequired();
+
+           // builder.HasMany(x => x.Medicos);
         }
     }
 }

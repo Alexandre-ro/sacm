@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public int CodigoEspecialidade { get; set; }
+        public Especialidade Especialidade { get; set; }
         public string Crm { get; set; }
         public string Nome { get; set; }
         public string InstituicaoFormatura { get; set; }

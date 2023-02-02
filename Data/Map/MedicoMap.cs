@@ -19,6 +19,11 @@ namespace SACM.Data.Map
             builder.Property(x => x.AnoNascimento).HasColumnName("ano_nascimento").HasMaxLength(4).IsRequired();
             builder.Property(x => x.MesNascimento).HasColumnName("mes_nascimento").HasMaxLength(2).IsRequired();
             builder.Property(x => x.DiaNascimento).HasColumnName("dia_nascimento").HasMaxLength(2).IsRequired();
+
+            //1:n (medico-especialidade)
+            builder.HasOne(m => m.Especialidade)
+                   .WithMany(e => e.Medicos)
+                   .HasForeignKey(m => m.CodigoEspecialidade);
         }
     }
 }
