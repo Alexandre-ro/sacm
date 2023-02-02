@@ -2,7 +2,7 @@
 {
     public class Medico
     {
-        private int Id { get; set; }
+        public int Id { get; set; }
         public int CodigoEspecialidade { get; set; }
         public string Crm { get; set; }
         public string Nome { get; set; }
