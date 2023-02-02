@@ -17,6 +17,6 @@ namespace SACM.Data
         }
 
         public DbSet<Especialidade> Especialidades { get; set; }
-
+        public DbSet<Medico> Medicos { get; set; }
     }
 }
